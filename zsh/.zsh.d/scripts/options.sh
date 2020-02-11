@@ -26,9 +26,10 @@ export TERM="xterm-256color"
 
 # if [[ -d "/usr/lib/jvm/java-8-openjdk-amd64" ]]; then
   export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
-  # export ANDROID_HOME=~/Android/Sdk
-  # export PATH=$PATH:$ANDROID_HOME/platform-tools
-  # export PATH=$PATH:$ANDROID_HOME/tools/bin
+  export ANDROID_HOME=~/Android/Sdk
+  export PATH=$PATH:$ANDROID_HOME/platform-tools
+  export PATH=$PATH:$ANDROID_HOME/tools/bin
+  export PATH=$PATH:$ANDROID_HOME/emulator
 # fi
 
 # if [[ -d "/usr/lib/jvm/java-10-openjdk" ]]; then
