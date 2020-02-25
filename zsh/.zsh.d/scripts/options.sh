@@ -2,19 +2,21 @@ unset MAILCHECK # disable "you have mail" warning
 
 # os=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
 
-# asdf
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+# # asdf
+# . $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/completions/asdf.bash
+. /usr/local/opt/asdf/asdf.sh
+. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
 
 # fzf (mac)
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# if [[ "$(uname)" == "Darwin" ]]; then
-#   if [ -z "$TMUX" ]; then
-#     tmux attach -t default || tmux new -s default
-#   fi
-# fi
+if [[ "$(uname)" == "Darwin" ]]; then
+  if [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
+  fi
+fi
 
 export LC_ALL=en_US.UTF-8
 # export LC_MESSAGES="C"
@@ -24,13 +26,22 @@ export EDITOR='nvim'
 export TERM="xterm-256color"
 # export STOW_DIR=$HOME/.dotfiles
 
-# if [[ -d "/usr/lib/jvm/java-8-openjdk-amd64" ]]; then
-export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
-# export ANDROID_HOME=~/Android/Sdk
-# export PATH=$PATH:$ANDROID_HOME/platform-tools
-# export PATH=$PATH:$ANDROID_HOME/tools/bin
-# export PATH=$PATH:$ANDROID_HOME/emulator
-# fi
+if [[ -d "/usr/lib/jvm/java-8-openjdk-amd64" ]]; then
+  export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+  # export ANDROID_HOME=~/Android/Sdk
+  # export PATH=$PATH:$ANDROID_HOME/platform-tools
+  # export PATH=$PATH:$ANDROID_HOME/tools/bin
+  # export PATH=$PATH:$ANDROID_HOME/emulator
+fi
+
+export ANDROID_HOME=~/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/emulator
+
+if [[ -d "$(/usr/libexec/java_home)" ]]; then
+  export JAVA_HOME=$(/usr/libexec/java_home)
+fi
 
 # if [[ -d "/usr/lib/jvm/java-10-openjdk" ]]; then
 #   export JAVA_HOME="/usr/lib/jvm/java-10-openjdk"
@@ -59,9 +70,9 @@ source ~/.config/tmuxinator/tmuxinator.zsh
 
 # WSL2 configurations
 
-export $(dbus-launch)
-export LIBGL_ALWAYS_INDIRECT=1
-export WSL_VERSION=$(wsl.exe -l -v | grep -a '[*]' | sed 's/[^0-9]*//g')
-export WSL_HOST=$(tail -1 /etc/resolv.conf | cut -d' ' -f2)
-# export ADB_SERVER_SOCKET=tcp:$WSL_HOST:5037
-export DISPLAY=$WSL_HOST:0
+# export $(dbus-launch)
+# export LIBGL_ALWAYS_INDIRECT=1
+# export WSL_VERSION=$(wsl.exe -l -v | grep -a '[*]' | sed 's/[^0-9]*//g')
+# export WSL_HOST=$(tail -1 /etc/resolv.conf | cut -d' ' -f2)
+# # export ADB_SERVER_SOCKET=tcp:$WSL_HOST:5037
+# export DISPLAY=$WSL_HOST:0

@@ -33,5 +33,6 @@ alias es="ember server"
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   alias ga="gitk --all"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-  alias ga="gitx --all"
+  # alias ga="gitx --all"
+  alias ga="fork"
 fi

@@ -40,6 +40,8 @@ source ~/.vim.d/config/deoplete.vim
 source ~/.vim.d/config/vim-textobj-user.vim
 source ~/.vim.d/config/alchemist.vim
 source ~/.vim.d/config/emmet.vim
+source ~/.vim.d/config/vim-lsc.vim
+source ~/.vim.d/config/coc.vim
 
 " source ~/.vim.d/config/vim-hardtime.vim
 
