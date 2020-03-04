@@ -25,7 +25,6 @@ Plug 'junegunn/fzf.vim'
 "endif
 
 Plug 'mattn/emmet-vim'
-" Plug 'dense-analysis/ale'
 Plug 'chrisbra/Colorizer'
 Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vim-better-default'
@@ -58,7 +57,6 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'slashmili/alchemist.vim'
 Plug 'vim-ruby/vim-ruby'
-Plug 'dart-lang/dart-vim-plugin'
 Plug 'natebosch/vim-lsc'
 Plug 'natebosch/vim-lsc-dart'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}

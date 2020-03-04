@@ -33,7 +33,6 @@ source ~/.vim.d/config/vim-easyclip.vim
 source ~/.vim.d/config/vim-gitgutter.vim
 source ~/.vim.d/config/easyalign.vim
 source ~/.vim.d/config/vim-altr.vim
-" source ~/.vim.d/config/ale.vim
 source ~/.vim.d/config/vim-mix-format.vim
 source ~/.vim.d/config/lightline.vim
 source ~/.vim.d/config/deoplete.vim
@@ -41,7 +40,7 @@ source ~/.vim.d/config/vim-textobj-user.vim
 source ~/.vim.d/config/alchemist.vim
 source ~/.vim.d/config/emmet.vim
 source ~/.vim.d/config/vim-lsc.vim
-source ~/.vim.d/config/coc.vim
+" source ~/.vim.d/config/coc.vim
 
 " source ~/.vim.d/config/vim-hardtime.vim
 
