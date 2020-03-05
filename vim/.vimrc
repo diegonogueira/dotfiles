@@ -44,7 +44,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'mg979/vim-visual-multi', { 'branch': 'test' }
   Plug 'thinca/vim-visualstar'
   Plug 'tpope/vim-repeat'
-  Plug 'svermeulen/vim-easyclip'
+  " Plug 'svermeulen/vim-easyclip'
   Plug 'brooth/far.vim'
   Plug 'vim-scripts/CmdlineComplete'
   Plug 'kana/vim-altr'
@@ -54,8 +54,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'itchyny/lightline.vim'
   Plug 'godlygeek/tabular'
   Plug 'plasticboy/vim-markdown'
-  Plug 'slashmili/alchemist.vim'
-  Plug 'vim-ruby/vim-ruby'
+  " Plug 'slashmili/alchemist.vim'
   " Plug 'natebosch/vim-lsc'
   " Plug 'natebosch/vim-lsc-dart'
   " Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -76,6 +75,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'terryma/vim-expand-region'
   Plug 'diegonogueira/nova-vim'
   Plug 'jnurmine/Zenburn'
+  " Plug 'autozimu/LanguageClient-neovim', {
+  "       \ 'branch': 'next',
+  "       \ 'do': 'bash install.sh',
+  "       \ }
 call plug#end()
 
 " ======================================
@@ -83,10 +86,13 @@ call plug#end()
 " ======================================
 
 let g:vim_better_default_fold_key_mapping = 0
+let g:vim_better_default_file_key_mapping = 0
+let g:vim_better_default_buffer_key_mapping = 0
 
 runtime! plugin/default.vim
 nunmap <Leader>sc
 nunmap <Leader>tp
+nnoremap <Leader>D :bd<CR>
 
 " ======================================
 " ============= Ultilsnips =============
@@ -120,10 +126,10 @@ let g:fzf_action = {
 command! -bang -nargs=* GGrep
       \ call fzf#vim#grep('git grep --color=always --line-number '.shellescape(<q-args>), 0, <bang>0)
 
-nnoremap <silent> <leader>pf :call FZFOpen(':Files')<CR>
-nnoremap <silent> <leader>pb :call FZFOpen(':Buffers')<CR>
-nnoremap <silent> <leader>pr :call FZFOpen(':History')<CR>
-nnoremap <silent> <leader>pg :call FZFOpen(':Ag')<CR>
+nnoremap <silent> <leader>f :call FZFOpen(':Files')<CR>
+nnoremap <silent> <leader>b :call FZFOpen(':Buffers')<CR>
+nnoremap <silent> <leader>r :call FZFOpen(':History')<CR>
+nnoremap <silent> <leader>F :call FZFOpen(':Ag')<CR>
 
 " ======================================
 " =========== Camelcase ================
@@ -162,8 +168,8 @@ nmap <leader>; <Plug>CommentaryLine
 
 let NERDTreeShowHidden=1
 
-noremap <leader>pt :NERDTreeToggle<CR>
-noremap <leader>pN :NERDTreeFind<CR>
+noremap <leader>n :NERDTreeToggle<CR>
+noremap <leader>N :NERDTreeFind<CR>
 
 " ======================================
 " ============ Easymotion ==============
@@ -172,12 +178,12 @@ noremap <leader>pN :NERDTreeFind<CR>
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 let g:EasyMotion_smartcase = 1
 
-nmap <leader>es <Plug>(easymotion-s)
-map <Leader>ew <Plug>(easymotion-bd-w)
-map <Leader>ej <Plug>(easymotion-j)
-map <Leader>ek <Plug>(easymotion-k)
-map  <leader>e/ <Plug>(easymotion-sn)
-omap <leader>e/ <Plug>(easymotion-tn)
+nmap <leader>s <Plug>(easymotion-s)
+map <Leader>e <Plug>(easymotion-bd-w)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map  <leader>/ <Plug>(easymotion-sn)
+omap <leader>/ <Plug>(easymotion-tn)
 
 " ======================================
 " ========== Visual multi ==============
@@ -205,18 +211,38 @@ endfunction
 let test#filename_modifier = ":~"
 let test#strategy = "vimux"
 
-nnoremap <silent> ,tt :TestNearest<CR>
-nnoremap <silent> ,tb :TestFile<CR>
-nnoremap <silent> ,ta :TestSuite<CR>
-nnoremap <silent> ,tr :TestLast<CR>
-nnoremap <silent> ,tv :TestVisit<CR>
+nnoremap <silent> <leader>tt :TestNearest<CR>
+nnoremap <silent> <leader>tb :TestFile<CR>
+nnoremap <silent> <leader>ta :TestSuite<CR>
+nnoremap <silent> <leader>tr :TestLast<CR>
+nnoremap <silent> <leader>tv :TestVisit<CR>
+
+" ======================================
+" ============ Vimux ================
+" ======================================
+
+function! TmuxToggleZoom()
+  return system("tmux resize-pane -t 0 -Z")
+endfunction
+
+function! TmuxSetSize(size)
+  return system("tmux resize-pane -t 1 -y " . a:size)
+endfunction
+
+map <Leader>vf :VimuxZoomRunner<CR>
+map <Leader>vq :VimuxCloseRunner<CR>
+map <Leader>vi :VimuxInspectRunner<CR>
+noremap <silent> <leader>vt :call TmuxToggleZoom()<CR>
+noremap <silent> <leader>vj :call TmuxSetSize(7)<CR>
+noremap <silent> <leader>vk :call TmuxSetSize(30)<CR>
 
 " ======================================
 " ============ Easyclip ================
 " ======================================
 
-let g:EasyClipAutoFormat=1
-let g:EasyClipPreserveCursorPositionAfterYank=1
+" let g:EasyClipAutoFormat=1
+" let g:EasyClipPreserveCursorPositionAfterYank=1
+" let g:EasyClipUseCutDefaults = 0
 
 " ======================================
 " ============ Git gutter ==============
@@ -239,7 +265,7 @@ call altr#remove_all()
 call altr#define('web/%/%.ex', 'lib/%/%.ex', 'test/%/%_test.exs')
 call altr#define('app/%/%.rb', 'test/%/%_test.rb')
 
-nmap ,gt <Plug>(altr-forward)
+nmap <leader>gt <Plug>(altr-forward)
 
 " ======================================
 " ============= Lightline ==============
@@ -269,7 +295,7 @@ omap q iq
 " ============ Alchemist ===============
 " ======================================
 
-let g:alchemist_tag_map = '<leader>gd'
+" let g:alchemist_tag_map = '<leader>gd'
 
 " ======================================
 " ============== Emmet =================
@@ -403,8 +429,10 @@ if v:version >= 700
   au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
 endif
 
-nnoremap <leader>fa :saveas <C-R>=expand("%")<CR>
-nnoremap <leader>fr :edit!<CR>
+
+nnoremap <Leader>s :update<CR>
+nnoremap <leader>S :saveas <C-R>=expand("%")<CR>
+nnoremap <leader>E :edit!<CR>
 nnoremap <leader><Tab> :b#<CR>
 
 nnoremap <silent> <Esc><Esc> :let @/=""<CR>
@@ -418,3 +446,17 @@ nnoremap <leader>o o<cr>
 nnoremap <leader>O O<esc>O
 nnoremap <leader>p o<esc>p
 nnoremap <leader>P O<esc>P
+
+" " ======================================
+" " ========= LanguageClient =============
+" " ======================================
+
+" set hidden
+
+" let g:LanguageClient_serverCommands = {
+"       \ 'elixir': ['~/elixir-ls/release/language_server.sh'],
+"       \ }
+
+" nnoremap <leader>cc :call LanguageClient_contextMenu()<CR>
+" nnoremap <silent> <leader>gh :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> <leader>gd :call LanguageClient#textDocument_definition()<CR>
