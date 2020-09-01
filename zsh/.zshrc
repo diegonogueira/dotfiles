@@ -44,11 +44,11 @@ alias es="ember server"
 # ============ Exports =================
 # ======================================
 
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  export PATH="$PATH:$HOME/flutter/bin"
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-  export PATH="$PATH:$HOME/flutter/bin"
-fi
+# if [[ "$OSTYPE" == "linux-gnu" ]]; then
+#   export PATH="$PATH:$HOME/flutter/bin"
+# elif [[ "$OSTYPE" == "darwin"* ]]; then
+#   export PATH="$PATH:$HOME/flutter/bin"
+# fi
 
 # ======================================
 # ============== ASDF ==================
@@ -65,19 +65,21 @@ export TERM="xterm-256color"
 # ============== JAVA ==================
 # ======================================
 
-if [[ -d "/usr/lib/jvm/java-8-openjdk-amd64" ]]; then
-  export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
-fi
+# if [[ -d "/usr/lib/jvm/java-8-openjdk-amd64" ]]; then
+#   export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+# fi
 
-if [[ -d "/usr/lib/jvm/java-11-openjdk-amd64" ]]; then
-  export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
-fi
+# if [[ -d "/usr/lib/jvm/java-11-openjdk-amd64" ]]; then
+#   export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+# fi
 
-export ANDROID_HOME=~/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-export PATH=$PATH:$ANDROID_HOME/emulator
+# export ANDROID_HOME=~/Android/Sdk
+# export PATH=$PATH:$ANDROID_HOME/platform-tools
+# export PATH=$PATH:$ANDROID_HOME/tools/bin
+# export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+# export PATH=$PATH:$ANDROID_HOME/emulator
+
+. ~/.asdf/plugins/java/set-java-home.zsh
 
 # ======================================
 # =============== FZF ==================
@@ -98,7 +100,7 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source ~/.config/tmuxinator/tmuxinator.zsh
+# source ~/.config/tmuxinator/tmuxinator.zsh
 
 # WSL2 configurations
 
