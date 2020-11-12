@@ -110,3 +110,4 @@ fi
 # export WSL_HOST=$(tail -1 /etc/resolv.conf | cut -d' ' -f2)
 # # export ADB_SERVER_SOCKET=tcp:$WSL_HOST:5037
 # export DISPLAY=$WSL_HOST:0
+# export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
