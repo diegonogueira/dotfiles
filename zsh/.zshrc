@@ -34,6 +34,8 @@ alias iexm="iex -S mix"
 
 alias es="ember server"
 
+alias drop_cache="sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a && printf '\n%s\n' 'Ram-cache and Swap Cleared'\""
+
 # if [[ "$OSTYPE" == "linux-gnu" ]]; then
 #   alias ga="gitk --all"
 # elif [[ "$OSTYPE" == "darwin"* ]]; then
@@ -78,6 +80,7 @@ export TERM="xterm-256color"
 # export PATH=$PATH:$ANDROID_HOME/tools/bin
 # export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 # export PATH=$PATH:$ANDROID_HOME/emulator
+# # export ADB_SERVER_SOCKET=tcp:$WSL_HOST:5037
 
 . ~/.asdf/plugins/java/set-java-home.zsh
 
@@ -85,29 +88,32 @@ export TERM="xterm-256color"
 # =============== FZF ==================
 # ======================================
 
-if [[ -f "/usr/share/doc/fzf/examples/key-bindings.zsh" ]]; then
-  source /usr/share/doc/fzf/examples/key-bindings.zsh
-fi
+# if [[ -f "/usr/share/doc/fzf/examples/key-bindings.zsh" ]]; then
+#   source /usr/share/doc/fzf/examples/key-bindings.zsh
+# fi
 
-if [[ -f "/usr/share/doc/fzf/examples/key-bindings.zsh" ]]; then
-  source /usr/share/doc/fzf/examples/key-bindings.zsh
-fi
+# if [[ -f "/usr/share/doc/fzf/examples/key-bindings.zsh" ]]; then
+#   source /usr/share/doc/fzf/examples/key-bindings.zsh
+# fi
 
-if [[ -f "/usr/share/fzf/key-bindings.zsh" ]]; then
-  source /usr/share/fzf/key-bindings.zsh
-  source /usr/share/fzf/completion.zsh
-fi
+# if [[ -f "/usr/share/fzf/key-bindings.zsh" ]]; then
+#   source /usr/share/fzf/key-bindings.zsh
+#   source /usr/share/fzf/completion.zsh
+# fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# ======================================
+# ========== TMUXINATOR ================
+# ======================================
 
 # source ~/.config/tmuxinator/tmuxinator.zsh
 
-# WSL2 configurations
+# ======================================
+# =============== WSL ==================
+# ======================================
 
-# export $(dbus-launch)
 # export LIBGL_ALWAYS_INDIRECT=1
 # export WSL_VERSION=$(wsl.exe -l -v | grep -a '[*]' | sed 's/[^0-9]*//g')
 # export WSL_HOST=$(tail -1 /etc/resolv.conf | cut -d' ' -f2)
-# # export ADB_SERVER_SOCKET=tcp:$WSL_HOST:5037
 # export DISPLAY=$WSL_HOST:0
-# export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
