@@ -32,9 +32,11 @@ alias mt="mix test"
 alias mps="mix phx.server"
 alias iexm="iex -S mix"
 
-alias es="ember server"
-
 alias drop_cache="sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a && printf '\n%s\n' 'Ram-cache and Swap Cleared'\""
+
+docker_images_clear() {
+  docker rmi $(docker images -f "dangling=true" -q)
+}
 
 # if [[ "$OSTYPE" == "linux-gnu" ]]; then
 #   alias ga="gitk --all"

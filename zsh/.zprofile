@@ -4,6 +4,9 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
    if [ "$RUNNING_AGENT" = "0" ]; then
         # Launch a new instance of the agent
         ssh-agent -s &> $HOME/.ssh/ssh-agent
+        eval `cat $HOME/.ssh/ssh-agent`
+        ssh-add $HOME/.ssh/id_rsa
+        ssh-add $HOME/.ssh/id_ed25519
    fi
    eval `cat $HOME/.ssh/ssh-agent`
 fi
