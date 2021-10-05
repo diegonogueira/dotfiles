@@ -1,4 +1,19 @@
-source ~/.vimrc
+" ======================
+" Vim Plug
+" ======================
+
+" if empty(glob('~/.config/nvim/autoload/plug.vim'))
+"   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"   autocmd VimEnter * PlugInstall
+" endif
+
+" if !1 | finish | endif
+" if has('vim_starting')
+"   set nocompatible
+"   call plug#begin()
+" endif
+
+" source ~/.vimrc
 
 " call plug#begin('~/.vim/plugged2')
 "   Plug 'liuchengxu/vim-better-default'

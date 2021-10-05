@@ -1,121 +1,36 @@
-source $HOME/.zsh.d/.oh-my-zshrc
-unset MAILCHECK # disable "you have mail" warning
-
 # ======================================
-# ============= Alias ==================
+# ============== BASIC =================
 # ======================================
 
-alias ll="ls -Glahs"
-alias ls="/bin/ls -G"
-alias psgrep="ps aux | egrep -v egrep | egrep"
-alias internal_ip="ipconfig getifaddr en0"
-alias myip='export IP=`curl -s https://api.ipify.org`;echo $IP'
+unset MAILCHECK
 
-alias ga="git log --graph"
-alias gs="git status"
-alias gp="git push"
-alias gf="git fetch origin -p"
-alias gl="git log --graph"
-alias gpr="git pull --rebase"
-alias gca="git commit --ammend" # rename commit
-alias grh="git reset --hard" # move branch to point
-alias gffs="git flow feature start"
-alias gffp="git flow feature publish"
-alias gfff="git flow feature finish"
-alias gfft="git flow feature track"
-alias gfhs="git flow hotfix start"
-alias gfhp="git flow hotfix publish"
-alias gfhf="git flow hotfix finish"
-alias gfht="git flow hotfix track"
-
-alias mt="mix test"
-alias mps="mix phx.server"
-alias iexm="iex -S mix"
-
-alias drop_cache="sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a && printf '\n%s\n' 'Ram-cache and Swap Cleared'\""
-
-docker_images_clear() {
-  docker rmi $(docker images -f "dangling=true" -q)
-}
-
-# if [[ "$OSTYPE" == "linux-gnu" ]]; then
-#   alias ga="gitk --all"
-# elif [[ "$OSTYPE" == "darwin"* ]]; then
-#   alias ga="fork"
-# fi
+export LC_ALL=en_US.UTF-8
+export EDITOR='nvim'
+export TERM="xterm-256color"
+export PATH=~/.local/bin:$PATH
 
 # ======================================
-# ============ Exports =================
+# ============== ZSH ===================
 # ======================================
 
-# if [[ "$OSTYPE" == "linux-gnu" ]]; then
-#   export PATH="$PATH:$HOME/flutter/bin"
-# elif [[ "$OSTYPE" == "darwin"* ]]; then
-#   export PATH="$PATH:$HOME/flutter/bin"
-# fi
+export ZSH="${HOME}/.oh-my-zsh"
+ZSH_THEME="my"
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
+
+# bind k and j for VI mode
+bindkey -M vicmd 'j' history-substring-search-up
+bindkey -M vicmd 'k' history-substring-search-down
 
 # ======================================
 # ============== ASDF ==================
 # ======================================
 
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-
-export LC_ALL=en_US.UTF-8
-export EDITOR='vim'
-export TERM="xterm-256color"
+ . $HOME/.asdf/asdf.sh
 
 # ======================================
 # ============== JAVA ==================
 # ======================================
 
-# if [[ -d "/usr/lib/jvm/java-8-openjdk-amd64" ]]; then
-#   export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
-# fi
-
-# if [[ -d "/usr/lib/jvm/java-11-openjdk-amd64" ]]; then
-#   export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
-# fi
-
-# export ANDROID_HOME=~/Android/Sdk
-# export PATH=$PATH:$ANDROID_HOME/platform-tools
-# export PATH=$PATH:$ANDROID_HOME/tools/bin
-# export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-# export PATH=$PATH:$ANDROID_HOME/emulator
-# # export ADB_SERVER_SOCKET=tcp:$WSL_HOST:5037
-
-. ~/.asdf/plugins/java/set-java-home.zsh
-
-# ======================================
-# =============== FZF ==================
-# ======================================
-
-# if [[ -f "/usr/share/doc/fzf/examples/key-bindings.zsh" ]]; then
-#   source /usr/share/doc/fzf/examples/key-bindings.zsh
-# fi
-
-# if [[ -f "/usr/share/doc/fzf/examples/key-bindings.zsh" ]]; then
-#   source /usr/share/doc/fzf/examples/key-bindings.zsh
-# fi
-
-# if [[ -f "/usr/share/fzf/key-bindings.zsh" ]]; then
-#   source /usr/share/fzf/key-bindings.zsh
-#   source /usr/share/fzf/completion.zsh
-# fi
-
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# ======================================
-# ========== TMUXINATOR ================
-# ======================================
-
-# source ~/.config/tmuxinator/tmuxinator.zsh
-
-# ======================================
-# =============== WSL ==================
-# ======================================
-
-# export LIBGL_ALWAYS_INDIRECT=1
-# export WSL_VERSION=$(wsl.exe -l -v | grep -a '[*]' | sed 's/[^0-9]*//g')
-# export WSL_HOST=$(tail -1 /etc/resolv.conf | cut -d' ' -f2)
-# export DISPLAY=$WSL_HOST:0
+# export _JAVA_OPTIONS='-Xms256m -Xmx256m'
+# export ES_JAVA_OPTS='-Xms256m -Xmx256m'
