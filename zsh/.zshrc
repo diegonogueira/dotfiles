@@ -27,6 +27,7 @@ bindkey -M vicmd 'k' history-substring-search-down
 # ======================================
 
  . $HOME/.asdf/asdf.sh
+export ERL_AFLAGS="-kernel shell_history enabled"
 
 # ======================================
 # ============== JAVA ==================
