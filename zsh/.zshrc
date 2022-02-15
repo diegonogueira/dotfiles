@@ -35,3 +35,4 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 # export _JAVA_OPTIONS='-Xms256m -Xmx256m'
 # export ES_JAVA_OPTS='-Xms256m -Xmx256m'
+export ES_JAVA_OPTS='-Xms1g -Xmx1g'
